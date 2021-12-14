@@ -1,0 +1,9 @@
+- if @urls.nil?
+  .w-full.h-full.fixed.bg-gray-600
+  = form_with url: root_path, method: :post, class: "w-full h-full fixed inset-0" do |f|
+    = f.text_field :user_id, autofocus: true, class: "border-2 block mx-auto mt-96 w-96 h-16 text-4xl px-4 py-3 rounded-md"
+    = f.submit "Search", data: {disable_with: "Loading..."}, class: "mx-auto mt-5 block px-5 py-2 bg-yellow-300 rounded-md cursor-pointer hover:bg-yellow-400"
+- else
+  .grid.grid-rows-auto.mx-auto.mt-5.gap-5.justify-items-center
+    - @urls.each do |url|
+      = render "image", url: url
